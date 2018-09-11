@@ -31,6 +31,7 @@ async function getSong(message) {
     ].map(([name, value]) => ({name, value}))
     const embed = new RichEmbed({fields, url: songData.track.external_urls.spotify})
     embed.setTitle(name)
+    embed.setImage((songData.track.album.images[2] || songData.track.album.images[1]).url)
     message.channel.send(embed)
   })
 }
