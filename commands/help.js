@@ -23,7 +23,7 @@ function help(message, args){
       if (helpDescriptions[command] === null) {
         message.reply('My apologies, I do not have any information about that command.')
       } else {
-        message.reply(`Usage: ${titleCase(command)} ${helpDescriptions[command]}`)
+        message.reply(`Usage: Minori ${titleCase(command)} ${helpDescriptions[command]}`)
       }
     } else {
       message.reply('Sorry, I do not recognize that command.')
