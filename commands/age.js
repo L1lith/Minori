@@ -1,6 +1,5 @@
 const DateDiff = require('date-diff')
-//const birthday = new Date('2017-09-24T10:10:08Z')
-const birthday = new Date('2017-09-11T10:10:08Z')
+const birthday = new Date('2017-09-24T10:10:08Z')\\
 const timer = require("../functions/timer")
 
 async function age(message){
