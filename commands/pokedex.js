@@ -15,6 +15,7 @@ async function pokedex(message, args){
     } else {
       message.channel.send('Pokedex Error! Please change the batteries.')
     }
+    return
   }
   const types = pokemon.types.map(typeObject=>{return titleCase(typeObject.type.name)})
   const images = Object.entries(pokemon.sprites).filter(entry=>{return entry[1] && !entry[0].includes('back')})
