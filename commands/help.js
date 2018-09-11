@@ -29,7 +29,7 @@ function help(message, args){
       message.reply('Sorry, I do not recognize that command.')
     }
   } else {
-    message.reply('Commands: ' + commandListString + '\nTo See More about a specific command try "Minori Help {Command}"')
+    message.reply('Commands: ' + commandListString + '\nTo see more about a specific command try "Minori Help {Command}"')
   }
 }
 
