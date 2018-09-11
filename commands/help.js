@@ -13,7 +13,7 @@ Object.entries(commands).forEach(([commandName, exports]) => {
   commandListString.push(commandName)
 })
 
-commandListString = titleCase(commandListString.sort().join(", "))
+commandListString = commandListString.sort().join(", ")
 
 function help(message, args){
   if (args.length > 1) throw "Too Many Arguments"
