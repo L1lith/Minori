@@ -16,7 +16,7 @@ request('https://api.spotify.com/v1/playlists/' + PlaylistID, requestFormat, (er
   totalTracks = JSON.parse(body).tracks.total
 })
 
-async function getSong(message) {
+async function dj(message) {
   if (networkError) return message.reply("Sorry, this command is unavailable due to a network error.")
   if (totalTracks === null) return message.reply("Sorry, this command is temporarily unavailable, please try again in a minute or two.")
   const songNumber = Math.floor(Math.random() * (totalTracks - 1))
@@ -36,4 +36,4 @@ async function getSong(message) {
   })
 }
 
-exports.run = getSong
+exports.run = dj
