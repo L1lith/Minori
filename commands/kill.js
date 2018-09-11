@@ -1,4 +1,5 @@
 function kill(message, args, {client}) {
+  if (message.mentions.everyone === true) return message.reply("Executing Order 66.")
   const target = (Array.from(message.mentions.users)[0] || [])[0]
   if (!target) throw 'You must mention someone to target.'
   if (target === client.user.id) { // Telling Minori to kill itself
