@@ -25,5 +25,4 @@ async function age(message){
   message.reply(`I am ${ageString} old.`);
 }
 
-exports.maxArgs = 0
 exports.run = age
