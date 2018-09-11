@@ -17,15 +17,20 @@ async function pokedex(message, args){
     }
     return
   }
+
+  let abilities = pokemon.abilities.sort((a, b) => a.slot - b.slot)
+  abilities = abilities.map(({ability}) => titleCase(ability.name.split('-').join(" ")))
   const types = pokemon.types.map(typeObject=>{return titleCase(typeObject.type.name)})
   const images = Object.entries(pokemon.sprites).filter(entry=>{return entry[1] && !entry[0].includes('back')})
   const image = images[Math.floor(Math.random() * images.length)][1]
-  const embed = new RichEmbed({title: titleCase(pokemon.name),
-    fields: [
-      {name:'ID', value: pokemon.id},
-      {name:(types.length > 1 ? "Types" : "Type"),value:types.join(', ')},
-      {name:"Weight",value: pokemon.weight}
-    ]})
+  const fields = [
+    ['ID', pokemon.id],
+    [types.length > 1 ? "Types" : "Type", types.join(', ')],
+    [abilities.length > 1 ? "Abilities" : "Ability", abilities.join(", ")],
+    ["Weight", pokemon.weight],
+    ["Height", pokemon.height]
+  ].map(([name, value]) => ({name, value}))
+  const embed = new RichEmbed({title: titleCase(pokemon.name), fields})
   embed.setImage(image)
   embed.setURL('https://www.pokemon.com/us/pokedex/'+pokemon.name)
   message.channel.send(embed)
