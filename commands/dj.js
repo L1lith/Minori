@@ -12,7 +12,11 @@ const requestFormat = {headers: {
 }}
 
 request('https://api.spotify.com/v1/playlists/' + PlaylistID, requestFormat, (err, response, body) => {
-  if (err || response.statusCode !== 200) return networkError = true
+  if (err || response.statusCode !== 200) {
+    networkError = true
+    console.log(err ? err : "Invalid Spotify Status Code "+response.statusCode)
+    return
+  }
   totalTracks = JSON.parse(body).tracks.total
 })
 
@@ -31,7 +35,7 @@ async function dj(message) {
     ].map(([name, value]) => ({name, value}))
     const embed = new RichEmbed({fields, url: songData.track.external_urls.spotify})
     embed.setTitle(name)
-    embed.setImage((songData.track.album.images[2] || songData.track.album.images[1]).url)
+    embed.setImage(songData.track.album.images.reverse()[0].url) // Smallest Image
     message.channel.send(embed)
   })
 }
