@@ -1,5 +1,5 @@
 function pet(message) {
-  message.reply("*Purrrrrr*")
+  return "*Purrrrrr*"
 }
 
 exports.run = pet

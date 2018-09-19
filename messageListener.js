@@ -11,9 +11,10 @@ async function messageListener(client, message) {
     const args = parts.slice(2).filter(str => str.length > 0)
     const fullArgsString = args.join(" ")
     const commandData = [message, args, {fullArgsString, command, parts, content, client}]
+    let output
     try {
       if (command.length < 1) {
-        await commands.mention.run(...commandData)
+        output = await commands.mention.run(...commandData)
       } else if (commands.hasOwnProperty(command)) {
         const commandObject = commands[command]
         const helpString = commandObject.help ? `\nUsage: ${titleCase(command)} ` + commandObject.help : ""
@@ -27,10 +28,11 @@ async function messageListener(client, message) {
         if (typeof commandObject.maxArgs == "number") {
           if (args.length > commandObject.maxArgs) return message.reply("Too many arguments" + helpString)
         }
-        await commandObject.run(...commandData)
+        output = await commandObject.run(...commandData)
       } else {
-        await commands.unknown.run(...commandData)
+        output = await commands.unknown.run(...commandData)
       }
+      if (typeof output == 'string') return message.reply(output)
     } catch(err) {
       if (err instanceof Error) {
         console.log(err)

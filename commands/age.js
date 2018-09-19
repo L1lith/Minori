@@ -22,7 +22,7 @@ async function age(message){
   let ageString = [yearsString, monthsString, daysString].filter(string => string.length > 0)
   if (ageString.length > 1) ageString[ageString.length - 1] = "and "+ageString[ageString.length - 1]
   ageString = ageString.join(', ')
-  message.reply(`I am ${ageString} old.`);
+  return `I am ${ageString} old.`
 }
 
 exports.run = age
