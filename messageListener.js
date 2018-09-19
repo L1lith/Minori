@@ -36,7 +36,7 @@ async function messageListener(client, message) {
     } catch(err) {
       if (err instanceof Error) {
         console.log(err)
-        message.reply("Uh oh... something weird happened")
+        message.reply("Error, unable to complete request")
       } else {
         message.reply(err.toString())
       }
