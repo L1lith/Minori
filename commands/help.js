@@ -4,7 +4,7 @@ const usageDescriptions = {}
 let commandListString = []
 
 Object.entries(commands).forEach(([commandName, exports]) => {
-  if (["unknown", "mention"].includes(commandName) || exports.hidden === true) return // Reserved Commands
+  if (exports.hidden === true) return // Reserved Commands
   if (typeof exports.usage == "string" && exports.usage.length > 0) {
     usageDescriptions[commandName] = exports.usage
   } else {
@@ -33,4 +33,5 @@ function help(message, args){
   }
 }
 
+exports.hidden = true
 exports.run = help
