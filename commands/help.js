@@ -13,7 +13,7 @@ Object.entries(commands).forEach(([commandName, exports]) => {
   commandListString.push(commandName)
 })
 
-commandListString = commandListString.sort().join(", ")
+commandListString = commandListString.map(str => `\n- ${str}`).sort().join(", ")
 
 function help(message, args){
   if (args.length > 1) throw "Too Many Arguments"
@@ -23,13 +23,13 @@ function help(message, args){
       if (helpDescriptions[command] === null) {
         message.reply('My apologies, I do not have any information about that command.')
       } else {
-        message.reply(`Usage: Minori ${titleCase(command)} ${helpDescriptions[command]}`)
+        message.reply(`Usage: \`Minori ${titleCase(command)} ${helpDescriptions[command]}\``)
       }
     } else {
       message.reply('Sorry, I do not recognize that command.')
     }
   } else {
-    message.reply('Commands: ' + commandListString + '\nTo see more about a specific command try "Minori Help {Command}"')
+    message.reply('Commands: \`\`\`' + commandListString + '\`\`\`\nTo see more about a specific command try \`Minori Help {Command}\`')
   }
 }
 
