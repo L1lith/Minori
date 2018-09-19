@@ -13,7 +13,7 @@ Object.entries(commands).forEach(([commandName, exports]) => {
   commandListString.push(commandName)
 })
 
-commandListString = commandListString.map(str => `\n- ${str}`).sort().join(", ")
+commandListString = commandListString.map(str => `- ${str}`).sort().join("\n")
 
 function help(message, args){
   if (args.length > 1) throw "Too Many Arguments"
