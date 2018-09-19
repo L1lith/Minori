@@ -4,7 +4,7 @@ const helpDescriptions = {}
 let commandListString = []
 
 Object.entries(commands).forEach(([commandName, exports]) => {
-  if (["unknown", "mention"].includes(commandName)) return // Reserved Commands
+  if (["unknown", "mention"].includes(commandName) || exports.hidden === true) return // Reserved Commands
   if (typeof exports.help == "string" && exports.help.length > 0) {
     helpDescriptions[commandName] = exports.help
   } else {
