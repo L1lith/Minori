@@ -15,5 +15,6 @@ function kill(message, args, {client}) {
 }
 
 exports.argCount = 1
+exports.hidden = true
 exports.usage = "{@Mention}"
 exports.run = kill
