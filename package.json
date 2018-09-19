@@ -8,7 +8,8 @@
     "discord.js": "^11.2.1",
     "pokedex-promise-v2": "^3.0.3",
     "request": "^2.88.0",
-    "require-directory": "^2.1.1"
+    "require-directory": "^2.1.1",
+    "weighted-random": "^0.1.0"
   },
   "devDependencies": {},
   "scripts": {
