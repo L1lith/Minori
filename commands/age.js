@@ -1,8 +1,12 @@
 const DateDiff = require('date-diff')
 const birthday = new Date('2017-09-24T10:10:08Z')
 const timer = require("../functions/timer")
+const {ReactionEmoji} = require('discord.js')
+const stringCharsUnique = require('../functions/stringCharsUnique')
 
-async function age(message){
+const numberEmojis = "0⃣1⃣2⃣3⃣4⃣5⃣6⃣7⃣8⃣9⃣"
+
+async function age(message, args, client){
   var nowUTC = new Date(new Date().getTime());
   let dif = new DateDiff(nowUTC,birthday)
   const years = Math.floor(dif.years())
@@ -11,9 +15,14 @@ async function age(message){
   months = Math.floor(months)
   if (months === 0 && days === 0) {
     const response = await message.reply(`I am ${years} years old today!!`)
-    response.react('🎂')
-    await timer(10)
-    response.react('😊')
+    await response.react('🎂')
+    await response.react('😊')
+    if (stringCharsUnique(years)) {
+      const ageEmojis = years.toString().split('').map(num => parseInt(num)).map(number => numberEmojis.slice(number * 2, (number + 1) * 2))
+      for (let i = 0; i < ageEmojis.length; i++) {
+        await response.react(ageEmojis[i])
+      }
+    }
     return
   }
   const yearsString = years > 0 ? years + " years" : ""
