@@ -15,5 +15,5 @@ function kill(message, args, {client}) {
 }
 
 exports.argCount = 1
-exports.help = "{@Mention}"
+exports.usage = "{@Mention}"
 exports.run = kill

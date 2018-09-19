@@ -37,5 +37,5 @@ async function pokedex(message, args){
 }
 
 exports.maxArgs = 1
-exports.help = "{Pokemon}"
+exports.usage = "{Pokemon}"
 exports.run = pokedex
