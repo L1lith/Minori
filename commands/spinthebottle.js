@@ -1,8 +1,8 @@
 const kissImage = "https://i.imgur.com/Muh7YYP.jpg"
 
 async function spinTheBottle(message, args, {client}) {
-  const members = Array.from(message.guild.members)
-  if (members.length < 3) return "Not enough players"
+  const members = (Array.from(message.guild.members)).filter(member => member[1].user.bot === false)
+  if (members.length < 2) return "Not enough players"
   let match = null
   let tries = 0
   while (match === null || match === client.user.id || match === message.author.id) {
